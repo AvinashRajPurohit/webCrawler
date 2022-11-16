@@ -11,24 +11,35 @@ Built with ❤︎ and :coffee: in three night by  [Deepak Rajpurohit](https://gi
 
 # Features
 - #### Apis:
-    - Add Crawling Job (/add/crawling):
+    - Add Crawling Job (```/add/crawling```):
         - handling multiple jobs in postgres queue
         - proccess crawling and update status
         - Only process unprocessed requests
         - return md5 generated job id.
-    - Update job status (/update/crawling):
+
+    - Update job status (```/update/crawling```):
         - Used by crawler to update job status
-    - Get an enqueued job (/get/enqueued/job)
-    - Get all jobs by status (/get/jobs/{status}):
+
+    - Get an enqueued job (```/get/enqueued/job```)
+
+    - Get all jobs by status (```/get/jobs/{status}```):
         - Process only valid status
-    - Get an job by id (/get/job)
-    - Add Job Result (/add/result):
+
+    - Get an job by id (```/get/job```)
+
+    - Add Job Result (```/add/result```):
         - Add processed job result (crawler can intract with db only through apis)
 - #### App:
     - Realtime Chart and Table Visualization
     - Requests Concurrency
     - Micro-Service Arch
     - Dockerization 
+
+## Tech Stack:
+    - Node / Express js / Socket.io
+    - React / Antv / Socket.io client
+    - Docker
+    - Docker-compose
 
 # Installation
     - NPM install : https://nodejs.org/dist/v18.12.1/node-v18.12.1.pkg
@@ -92,4 +103,9 @@ docker-compose up -d
 #### Queue Performance:
     - for imporoving queue performance increased connection in postgres pool.
 
-#### Thank you 
+### Deployment:
+    - Backend: http://116.203.117.119:4000/
+    - Frontend: http://116.203.117.119:3000/
+
+    
+### Thank you 
