@@ -64,7 +64,7 @@ export async function processCrawling(id: number){
     console.log(`crawling is processing for job id ${data.id}`)
 
     // Check data validation
-    if (crawlerData.brand == undefined && crawlerData.title == undefined && crawlerData.brand == undefined){
+    if (crawlerData.brand == undefined || crawlerData.title == undefined || crawlerData.brand == undefined){
         // mark this job as failed.
         customRequest(updateCrawlerPath, {job_id: data.id, status: JobStatus.failed})
     }else{
@@ -76,7 +76,6 @@ export async function processCrawling(id: number){
         customRequest(updateCrawlerPath, {job_id: data.id, status: JobStatus.completed})
     }
   
-    customRequest(updateCrawlerPath, {job_id: Number(data.id) , "status": "completed"})
     await db_client.query("COMMIT");
     await new Promise(f => setTimeout(f, 100));
     db_client.release()
