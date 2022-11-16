@@ -8,8 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Table, TableBody } from "@mui/material";
 
-const socket = io("http://localhost:4000/");
-
+const socket = io("http://116.203.117.119:4000/");
 function createJobData(
   // Create object of job data
   job_name,
