@@ -1,0 +1,38 @@
+# docker-compose.yml
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: postgres
+    ports: 
+      - '5433:5432'
+    volumes:
+      - webcrawler-db:/var/lib/postgresql/data
+
+  webcrawler:
+    build:
+      context: ./server
+    command: npm start
+    environment:
+      POSTGRE_STR: postgres://postgres:postgres@postgres/postgres
+    depends_on:
+      - postgres
+    ports:
+      - '4000:4000'
+  
+  webcrawler_client:
+    build:
+      context: ./client
+    command: npm run start
+    depends_on:
+      - webcrawler
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+       
+volumes:
+  webcrawler-db:
